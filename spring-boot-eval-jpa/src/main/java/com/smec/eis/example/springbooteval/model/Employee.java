@@ -3,12 +3,13 @@ package com.smec.eis.example.springbooteval.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "EMPLOYEES")
-public class Employee {
+@Table(name = "HR.EMPLOYEES")
+public class Employee implements Serializable {
     @Id
     @SequenceGenerator(name = "employeeIdGenerator", sequenceName = "EMPLOYEES_SEQ", allocationSize = 1)
     @GeneratedValue(generator = "employeeIdGenerator", strategy = GenerationType.SEQUENCE)

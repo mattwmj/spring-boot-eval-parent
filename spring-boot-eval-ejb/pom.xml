@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring-boot-eval-parent</artifactId>
+        <groupId>com.smec.eis.example</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spring-boot-eval-ejb</artifactId>
+    <packaging>ejb</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>com.smec.eis.example</groupId>
+            <artifactId>spring-boot-eval-jpa</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>2.0.1.RELEASE</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <ejbVersion>3.2</ejbVersion>
+                    <generateClient>true</generateClient>
+                    <clientExcludes>
+                        <clientExclude>**/impl/*.class</clientExclude>
+                    </clientExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
