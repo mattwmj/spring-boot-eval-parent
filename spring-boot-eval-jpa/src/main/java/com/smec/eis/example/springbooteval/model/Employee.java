@@ -11,7 +11,7 @@ import java.util.Date;
 @Table(name = "HR.EMPLOYEES")
 public class Employee implements Serializable {
     @Id
-    @SequenceGenerator(name = "employeeIdGenerator", sequenceName = "EMPLOYEES_SEQ", allocationSize = 1)
+    @SequenceGenerator(name = "employeeIdGenerator", sequenceName = "HR.EMPLOYEES_SEQ", allocationSize = 1)
     @GeneratedValue(generator = "employeeIdGenerator", strategy = GenerationType.SEQUENCE)
     @Column(name = "EMPLOYEE_ID")
     private Long employeeId;

@@ -4,30 +4,57 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 
 
 public class EntityManagerFactoryProducer {
-
+    
     @Produces
     @ApplicationScoped
+    @PrimaryEM
     public EntityManagerFactory createEntityManagerFactory() {
-        return Persistence.createEntityManagerFactory("SBE_PU");
-    }
-
-    public void close(@Disposes EntityManagerFactory entityManagerFactory) {
-        entityManagerFactory.close();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PRIMARY_PU");
+        return emf;
     }
 
     @Produces
     @Dependent
-    public EntityManager createEntityManager(EntityManagerFactory entityManagerFactory) {
-        return entityManagerFactory.createEntityManager();
+    @PrimaryEM
+    public EntityManager createEntityManager(@PrimaryEM EntityManagerFactory entityManagerFactory) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        return em;
     }
 
-    public void close(@Disposes EntityManager entityManager) {
+    @Produces
+    @ApplicationScoped
+    @SecondaryEM
+    public EntityManagerFactory createSecondaryEntityManagerFactory() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SECONDARY_PU");
+        return emf;
+    }
+
+    @Produces
+    @Dependent
+    @SecondaryEM
+    public EntityManager createSecondaryEntityManager(@SecondaryEM EntityManagerFactory entityManagerFactory) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        return em;
+    }
+
+    public void close(@Disposes @PrimaryEM EntityManager entityManager) {
         entityManager.close();
+    }
+
+
+    public void close(@Disposes @PrimaryEM EntityManagerFactory entityManagerFactory) {
+        entityManagerFactory.close();
+    }
+
+    public void closeSecondary(@Disposes @SecondaryEM EntityManager entityManager) {
+        entityManager.close();
+    }
+
+    public void closeSecondary(@Disposes @SecondaryEM EntityManagerFactory entityManagerFactory) {
+        entityManagerFactory.close();
     }
 }

@@ -4,10 +4,30 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
-    <persistence-unit name="SBE_PU" transaction-type="JTA">
+    <persistence-unit name="PRIMARY_PU" transaction-type="JTA">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>jdbc/EIS_DS</jta-data-source>
-        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <class>com.smec.eis.example.springbooteval.model.Employee</class>
+        <!--<class>com.smec.eis.example.springbooteval.model.Job</class>-->
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+        <properties>
+            <property name="eclipselink.target-server" value="WebLogic_10"/>
+            <property name="eclipselink.target-database" value="Oracle11"/>
+            <property name="eclipselink.logging.logger" value="DefaultLogger"/>
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+            <property name="eclipselink.logging.level.sql" value="FINEST"/>
+            <property name="eclipselink.logging.exceptions" value="true"/>
+            <property name="eclipselink.jdbc.batch-writing" value="JDBC"/>
+            <property name="eclipselink.jdbc.batch-writing.size" value="1000"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="SECONDARY_PU" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/HR_DS</jta-data-source>
+        <class>com.smec.eis.example.springbooteval.model.Job</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
         <properties>
             <property name="eclipselink.target-server" value="WebLogic_10"/>

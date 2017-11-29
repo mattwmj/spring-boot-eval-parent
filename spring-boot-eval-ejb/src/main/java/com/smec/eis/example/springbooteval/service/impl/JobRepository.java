@@ -1,6 +1,6 @@
 package com.smec.eis.example.springbooteval.service.impl;
 
-import com.smec.eis.example.springbooteval.model.Employee;
+import com.smec.eis.example.springbooteval.model.Job;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.cdi.Eager;
 import org.springframework.stereotype.Repository;
@@ -9,9 +9,11 @@ import java.util.List;
 
 @Repository
 @Eager
-@PrimaryEM
-public interface EmployeeRepository extends PagingAndSortingRepository<Employee, Long> {
+@SecondaryEM
+public interface JobRepository extends PagingAndSortingRepository<Job, String> {
 
-    List<Employee> findByJob(String job);
+    List<Job> findByTitle(String title);
+
+    List<Job> findByMinSalaryGreaterThan(Long minSalary);
 
 }

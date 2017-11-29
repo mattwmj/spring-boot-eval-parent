@@ -13,13 +13,15 @@ public class EmployeeController {
 
     @Autowired
     private EJBLocator ejbLocator;
+    private EmployeeService employeeService = null;
 
-    private EmployeeService getEmployeeService() {
-        EmployeeService employeeService = null;
-        try {
-            employeeService = ejbLocator.getEJB(EmployeeService.class);
-        } catch (NamingException e) {
-            e.printStackTrace();
+    private synchronized EmployeeService getEmployeeService() {
+        if (employeeService == null) {
+            try {
+                employeeService = ejbLocator.getEJB(EmployeeService.class);
+            } catch (NamingException e) {
+                e.printStackTrace();
+            }
         }
         return employeeService;
     }
