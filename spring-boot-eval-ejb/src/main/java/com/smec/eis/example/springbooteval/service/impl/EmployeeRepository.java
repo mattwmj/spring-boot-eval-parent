@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-@Eager
 @PrimaryEM
+@Eager
 public interface EmployeeRepository extends PagingAndSortingRepository<Employee, Long> {
 
     List<Employee> findByJob(String job);
