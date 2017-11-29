@@ -36,9 +36,8 @@
         </dependency>
         <dependency>
             <groupId>com.smec.eis.example</groupId>
-            <artifactId>spring-boot-eval-ejb</artifactId>
+            <artifactId>spring-boot-eval-service-interface</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <type>ejb-client</type>
         </dependency>
 
         <dependency>

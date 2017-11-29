@@ -3,43 +3,42 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>spring-boot-eval-parent</artifactId>
+        <artifactId>spring-boot-eval-ejb</artifactId>
         <groupId>com.smec.eis.example</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>spring-boot-eval-ejb</artifactId>
+    <artifactId>spring-boot-eval-service-impl</artifactId>
     <packaging>ejb</packaging>
     <dependencies>
-        <dependency>
-            <groupId>com.smec.eis.example</groupId>
-            <artifactId>spring-boot-eval-jpa</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
         <dependency>
             <groupId>org.apache.deltaspike.modules</groupId>
             <artifactId>deltaspike-data-module-api</artifactId>
             <version>${deltaspike.version}</version>
-            <scope>provided</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.deltaspike.modules</groupId>
             <artifactId>deltaspike-data-module-impl</artifactId>
             <version>${deltaspike.version}</version>
-            <scope>provided</scope>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.deltaspike.modules</groupId>
             <artifactId>deltaspike-jpa-module-api</artifactId>
             <version>${deltaspike.version}</version>
-            <scope>provided</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.deltaspike.modules</groupId>
             <artifactId>deltaspike-jpa-module-impl</artifactId>
             <version>${deltaspike.version}</version>
-            <scope>provided</scope>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.smec.eis.example</groupId>
+            <artifactId>spring-boot-eval-service-interface</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <build>
@@ -49,10 +48,6 @@
                 <version>2.5.1</version>
                 <configuration>
                     <ejbVersion>3.2</ejbVersion>
-                    <generateClient>true</generateClient>
-                    <clientExcludes>
-                        <clientExclude>**/impl/*.class</clientExclude>
-                    </clientExcludes>
                 </configuration>
             </plugin>
         </plugins>

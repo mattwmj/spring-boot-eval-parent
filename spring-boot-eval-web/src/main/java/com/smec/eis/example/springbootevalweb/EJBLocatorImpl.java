@@ -12,7 +12,7 @@ public class EJBLocatorImpl implements EJBLocator {
     @Override
     public <T> T getEJB(Class<T> tClass) throws NamingException {
         Context ctx = new InitialContext();
-        T ejb = (T) ctx.lookup("java:global/spring-boot-app/spring-boot-eval-ejb/" + tClass.getSimpleName() + "Bean");
+        T ejb = (T) ctx.lookup("java:global/spring-boot-app/spring-boot-eval-service-impl/" + tClass.getSimpleName() + "Bean");
         return ejb;
     }
 }
