@@ -1,16 +1,15 @@
 package com.smec.eis.example.springbooteval.service.impl;
 
 import com.smec.eis.example.springbooteval.model.Employee;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.repository.cdi.Eager;
-import org.springframework.stereotype.Repository;
+import org.apache.deltaspike.data.api.EntityManagerConfig;
+import org.apache.deltaspike.data.api.EntityRepository;
+import org.apache.deltaspike.data.api.Repository;
 
 import java.util.List;
 
 @Repository
-@PrimaryEM
-@Eager
-public interface EmployeeRepository extends PagingAndSortingRepository<Employee, Long> {
+@EntityManagerConfig(entityManagerResolver = PrimaryEmResolver.class)
+public interface EmployeeRepository extends EntityRepository<Employee, Long> {
 
     List<Employee> findByJob(String job);
 

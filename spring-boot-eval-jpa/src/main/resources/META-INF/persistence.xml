@@ -7,9 +7,7 @@
     <persistence-unit name="PRIMARY_PU" transaction-type="JTA">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>jdbc/EIS_DS</jta-data-source>
-        <class>com.smec.eis.example.springbooteval.model.Employee</class>
-        <!--<class>com.smec.eis.example.springbooteval.model.Job</class>-->
-        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
         <properties>
             <property name="eclipselink.target-server" value="WebLogic_10"/>
@@ -21,13 +19,13 @@
             <property name="eclipselink.logging.exceptions" value="true"/>
             <property name="eclipselink.jdbc.batch-writing" value="JDBC"/>
             <property name="eclipselink.jdbc.batch-writing.size" value="1000"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="primary"/>
         </properties>
     </persistence-unit>
     <persistence-unit name="SECONDARY_PU" transaction-type="JTA">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>jdbc/HR_DS</jta-data-source>
-        <class>com.smec.eis.example.springbooteval.model.Job</class>
-        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
         <properties>
             <property name="eclipselink.target-server" value="WebLogic_10"/>
@@ -39,6 +37,7 @@
             <property name="eclipselink.logging.exceptions" value="true"/>
             <property name="eclipselink.jdbc.batch-writing" value="JDBC"/>
             <property name="eclipselink.jdbc.batch-writing.size" value="1000"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="secondary"/>
         </properties>
     </persistence-unit>
 </persistence>

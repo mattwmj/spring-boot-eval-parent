@@ -4,57 +4,35 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 public class EntityManagerFactoryProducer {
 
-    @Produces
-    @PrimaryEM
-    @ApplicationScoped
-    public EntityManagerFactory createEntityManagerFactory() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PRIMARY_PU");
-        return emf;
-    }
+    @PersistenceContext(unitName = "PRIMARY_PU")
+    private EntityManager primaryEM;
 
     @Produces
     @PrimaryEM
     @ApplicationScoped
-    public EntityManager createEntityManager(@PrimaryEM EntityManagerFactory entityManagerFactory) {
-        EntityManager em = entityManagerFactory.createEntityManager();
-        return em;
-    }
-
-    @Produces
-    @SecondaryEM
-    @ApplicationScoped
-    public EntityManagerFactory createSecondaryEntityManagerFactory() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SECONDARY_PU");
-        return emf;
-    }
-
-    @Produces
-    @SecondaryEM
-    @ApplicationScoped
-    public EntityManager createSecondaryEntityManager(@SecondaryEM EntityManagerFactory entityManagerFactory) {
-        EntityManager em = entityManagerFactory.createEntityManager();
-        return em;
+    public EntityManager createEntityManager() {
+        return primaryEM;
     }
 
     public void close(@Disposes @PrimaryEM EntityManager entityManager) {
-        entityManager.close();
+        primaryEM.close();
     }
 
+    @PersistenceContext(unitName = "SECONDARY_PU")
+    private EntityManager secondaryEM;
 
-    public void close(@Disposes @PrimaryEM EntityManagerFactory entityManagerFactory) {
-        entityManagerFactory.close();
+    @Produces
+    @SecondaryEM
+    @ApplicationScoped
+    public EntityManager createSecondaryEntityManager() {
+        return secondaryEM;
     }
 
     public void closeSecondary(@Disposes @SecondaryEM EntityManager entityManager) {
         entityManager.close();
-    }
-
-    public void closeSecondary(@Disposes @SecondaryEM EntityManagerFactory entityManagerFactory) {
-        entityManagerFactory.close();
     }
 }

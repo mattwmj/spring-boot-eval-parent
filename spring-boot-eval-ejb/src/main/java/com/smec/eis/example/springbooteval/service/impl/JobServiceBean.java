@@ -11,7 +11,6 @@ import java.util.List;
 public class JobServiceBean implements JobService {
 
     @Inject
-    @SecondaryEM
     JobRepository jobRepository;
 
     @Override

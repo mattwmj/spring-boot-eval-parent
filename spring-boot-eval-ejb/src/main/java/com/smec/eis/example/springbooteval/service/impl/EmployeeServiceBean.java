@@ -15,7 +15,6 @@ import java.util.List;
 public class EmployeeServiceBean implements EmployeeService {
 
     @Inject
-    @PrimaryEM
     private EmployeeRepository repository;
 
     @EJB
@@ -33,10 +32,10 @@ public class EmployeeServiceBean implements EmployeeService {
         employeeToCreate.setHireDate(new Date());
 
         //test jta transaction
-//        List<Job> jobs = jobService.findJobByMinSalaryGreaterThan(2000L);
-//        for (Job job : jobs) {
-//            System.out.println(job.getTitle());
-//        }
+        List<Job> jobs = jobService.findJobByMinSalaryGreaterThan(2000L);
+        for (Job job : jobs) {
+            System.out.println(job.getTitle());
+        }
 
         employeeToCreate.setJob(employee.getJob());
         try {
