@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "HR.EMPLOYEES")
+@Table(name = "EMPLOYEES")
 public class Employee implements Serializable {
     @Id
     @SequenceGenerator(name = "employeeIdGenerator", sequenceName = "HR.EMPLOYEES_SEQ", allocationSize = 1)
@@ -22,7 +22,8 @@ public class Employee implements Serializable {
     @Temporal(value = TemporalType.DATE)
     @Column(name = "HIRE_DATE")
     private Date hireDate;
-    @Column(name = "JOB_ID")
-    private String job;
+    @ManyToOne
+    @JoinColumn(name = "JOB_ID")
+    private Job job;
     private String email;
 }

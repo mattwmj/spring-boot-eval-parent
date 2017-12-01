@@ -25,7 +25,9 @@
     <persistence-unit name="SECONDARY_PU" transaction-type="JTA">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>jdbc/HR_DS</jta-data-source>
-        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <class>com.smec.eis.example.springbooteval.model.Job</class>
+        <class>com.smec.eis.example.springbooteval.model.Employee</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
         <properties>
             <property name="eclipselink.target-server" value="WebLogic_10"/>
