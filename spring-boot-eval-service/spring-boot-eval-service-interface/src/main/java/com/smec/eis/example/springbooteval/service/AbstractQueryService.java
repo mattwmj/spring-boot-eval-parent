@@ -5,19 +5,19 @@ import com.querydsl.core.types.Predicate;
 
 import java.util.List;
 
-public abstract class AbstractQueryService<T> implements QueryService<T> {
+public abstract class AbstractQueryService implements QueryService {
 
     @Override
-    public List<T> query(EntityPath<T> from, Predicate predicate) {
+    public <T> List<T> query(EntityPath<T> from, Predicate predicate) {
         List<T> resultList = getQueryDslSupport().query(from, predicate);
         return resultList;
     }
 
     @Override
-    public List<T> query(EntityPath<T> from, Predicate predicate, long offset, long limit) {
+    public <T> List<T> query(EntityPath<T> from, Predicate predicate, int offset, int limit) {
         List<T> resultList = getQueryDslSupport().query(from, predicate, offset, limit);
         return resultList;
     }
 
-    public abstract QueryDslSupport<T> getQueryDslSupport();
+    public abstract QueryDslSupport getQueryDslSupport();
 }

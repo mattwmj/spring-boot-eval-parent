@@ -5,10 +5,10 @@ import com.querydsl.core.types.Predicate;
 
 import java.util.List;
 
-public interface QueryService<T> {
+public interface QueryService {
 
-    List<T> query(EntityPath<T> from, Predicate predicate);
+    <T> List<T> query(EntityPath<T> from, Predicate predicate);
 
-    List<T> query(EntityPath<T> from, Predicate predicate, long offset, long limit);
+    <T> List<T> query(EntityPath<T> from, Predicate predicate, int offset, int limit);
 
 }
