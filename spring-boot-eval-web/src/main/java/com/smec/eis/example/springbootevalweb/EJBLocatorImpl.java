@@ -1,12 +1,9 @@
 package com.smec.eis.example.springbootevalweb;
 
-import org.springframework.stereotype.Component;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-@Component
 public class EJBLocatorImpl implements EJBLocator {
 
     @Override

@@ -3,7 +3,6 @@ package com.smec.eis.example.springbooteval.service.impl;
 import com.querydsl.core.types.EntityPath;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.smec.eis.example.springbooteval.service.QueryDslSupport;
 
 import javax.persistence.EntityManager;
 import java.util.List;

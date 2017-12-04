@@ -1,15 +1,11 @@
 package com.smec.eis.example.springbooteval.service.impl;
 
-import com.querydsl.core.types.EntityPath;
-import com.querydsl.core.types.Predicate;
-import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.smec.eis.example.springbooteval.model.Employee;
 import com.smec.eis.example.springbooteval.model.Job;
 import com.smec.eis.example.springbooteval.service.HRService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import java.util.Date;
 import java.util.List;
 

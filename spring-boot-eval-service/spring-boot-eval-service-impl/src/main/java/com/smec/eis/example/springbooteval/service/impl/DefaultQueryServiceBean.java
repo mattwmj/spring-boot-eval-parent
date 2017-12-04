@@ -25,6 +25,8 @@ public class DefaultQueryServiceBean implements DefaultQueryService {
 
     @Override
     public List query(EntityPath from, Predicate predicate, int offset, int limit) {
-        return null;
+        QueryDslDAO queryDslDAO = new QueryDslDAO(entityManager);
+        List resultList = queryDslDAO.query(from, predicate, offset, limit);
+        return resultList;
     }
 }
