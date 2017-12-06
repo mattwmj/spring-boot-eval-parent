@@ -14,7 +14,7 @@ public class TechDocController {
     @EJBClient
     private TechDocService techDocService;
 
-    @RequestMapping(value = "/tecDoc/{code}", method = RequestMethod.GET)
+    @RequestMapping(value = "/public/tecDoc/{code}", method = RequestMethod.GET)
     public @ResponseBody
     List<TechDoc> findByCodeLikePath(@PathVariable String code, @RequestParam(value = "offset", defaultValue = "0") int offset, @RequestParam(value = "limit", defaultValue = "50") int limit) {
         List<TechDoc> resultList = techDocService.findTechDocCodeLike(code, offset, limit);

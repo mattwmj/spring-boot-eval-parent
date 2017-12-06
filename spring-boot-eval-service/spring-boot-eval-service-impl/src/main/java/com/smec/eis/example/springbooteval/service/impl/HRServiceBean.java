@@ -4,8 +4,11 @@ import com.smec.eis.example.springbooteval.model.Employee;
 import com.smec.eis.example.springbooteval.model.Job;
 import com.smec.eis.example.springbooteval.service.HRService;
 
+import javax.annotation.Resource;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +19,8 @@ public class HRServiceBean implements HRService {
     private EmployeeRepository empRepository;
     @Inject
     private JobRepository jobRepository;
+    @Resource
+    private SessionContext sessionContext;
 
     public HRServiceBean() {
     }
@@ -41,6 +46,8 @@ public class HRServiceBean implements HRService {
 
     @Override
     public List<Employee> findEmployeeByJob(String job) {
+        Principal caller = sessionContext.getCallerPrincipal();
+        System.out.println(caller.getName());
         List<Employee> employees = empRepository.findByJob_id(job);
         return employees;
     }

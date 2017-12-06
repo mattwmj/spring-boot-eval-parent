@@ -1,0 +1,9 @@
+<?xml version = '1.0' encoding = 'GBK'?>
+<weblogic-ejb-jar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://xmlns.oracle.com/weblogic/weblogic-ejb-jar http://xmlns.oracle.com/weblogic/weblogic-ejb-jar/1.1/weblogic-ejb-jar.xsd"
+                  xmlns="http://xmlns.oracle.com/weblogic/weblogic-ejb-jar">
+    <run-as-role-assignment>
+        <role-name>WebInfra</role-name>
+        <run-as-principal-name>weblogic</run-as-principal-name>
+    </run-as-role-assignment>
+</weblogic-ejb-jar>

@@ -1,16 +1,14 @@
 package com.smec.eis.example.springbootevalweb;
 
 import org.springframework.beans.factory.config.DependencyDescriptor;
-import org.springframework.beans.factory.support.SimpleAutowireCandidateResolver;
+import org.springframework.context.annotation.ContextAnnotationAutowireCandidateResolver;
 
-import javax.naming.NamingException;
+public class EJBClientAutowiredCandidateResolver extends ContextAnnotationAutowireCandidateResolver {
 
-public class EJBClientAutowiredCandidateResolver extends SimpleAutowireCandidateResolver {
-
-    EJBLocator ejbLocator;
+    private EJBServiceLocator ejbLocator;
 
     public EJBClientAutowiredCandidateResolver() {
-        this.ejbLocator = new EJBLocatorImpl();
+        this.ejbLocator = new EJBServiceLocatorImpl();
     }
 
     @Override
@@ -18,13 +16,8 @@ public class EJBClientAutowiredCandidateResolver extends SimpleAutowireCandidate
         EJBClient ejbClientAnno = descriptor.getAnnotation(EJBClient.class);
         if (ejbClientAnno != null) {
             Class<?> ejbInterface = descriptor.getDependencyType();
-            try {
-                Object value = ejbLocator.getEJB(ejbInterface);
-                return value;
-            } catch (NamingException e) {
-                e.printStackTrace();
-                throw new RuntimeException(e);
-            }
+            Object value = ejbLocator.getService(ejbInterface);
+            return value;
         }
         return super.getSuggestedValue(descriptor);
     }
