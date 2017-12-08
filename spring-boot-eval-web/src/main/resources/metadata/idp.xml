@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" entityID="SSO-Server-0_vmTestC_domain">
+<md:IDPSSODescriptor WantAuthnRequestsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+<md:KeyDescriptor use="signing">
+<ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:X509Data>
+<ds:X509Certificate>
+MIIEYDCCA0igAwIBAgIGAVv6OMOwMA0GCSqGSIb3DQEBCwUAMHgxCzAJBgNVBAYTAlVTMRAwDgYD
+VQQIDAdNeVN0YXRlMQ8wDQYDVQQHDAZNeVRvd24xFzAVBgNVBAoMDk15T3JnYW5pemF0aW9uMRkw
+FwYDVQQLDBBGT1IgVEVTVElORyBPTkxZMRIwEAYDVQQDDAlDZXJ0R2VuQ0EwHhcNMTcwNTExMDEx
+NDM0WhcNMzIwNTEyMDExNDM0WjB2MQswCQYDVQQGEwJVUzEQMA4GA1UECAwHTXlTdGF0ZTEPMA0G
+A1UEBwwGTXlUb3duMRcwFQYDVQQKDA5NeU9yZ2FuaXphdGlvbjEZMBcGA1UECwwQRk9SIFRFU1RJ
+TkcgT05MWTEQMA4GA1UEAwwHd2xzZGV2MjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB
+AJyvNwo4xsUXcrJVhkB1SI5xafXqp+DJ6iBPE2qXvVTwatE8zh0c6/Vo8yn0pnkrb8NdGIj/3fis
+4oS59Hn+m5JdgS4XEqqQ7mj4BQJAM60C5I2QqcXo5nF8S1kAeFiK/uMvkejyrm3/QokLZQ5hWDYm
+OrfXbRU8F99GoGQhXsU4iFYNkKHzKbU7Lr2EXX5kNpOgPTDtEzmJIjU/EI3MV7cgwoxWLsfTSA5T
+Pk0oQwn3/+iOUe/UW78ILSPfPxeVjiDv7E6g8pjV4/lRD7s+No39Gb3rcJTLQ2uAQ3OX28eovmcR
+T1EP3Jd600dzplgZsQFs77czbGhai6ovNN1LrQsCAwEAAaOB8TCB7jAJBgNVHRMEAjAAMA4GA1Ud
+DwEB/wQEAwID+DAdBgNVHQ4EFgQUrJtKTuEjQ9CLHtaZaYOn2XUuyMAwgbEGA1UdIwSBqTCBpoAU
+NDj9RdiAz8fS6N8d+KE5sBGIAGqhfKR6MHgxCzAJBgNVBAYTAlVTMRAwDgYDVQQIDAdNeVN0YXRl
+MQ8wDQYDVQQHDAZNeVRvd24xFzAVBgNVBAoMDk15T3JnYW5pemF0aW9uMRkwFwYDVQQLDBBGT1Ig
+VEVTVElORyBPTkxZMRIwEAYDVQQDDAlDZXJ0R2VuQ0GCEEAESIbEQe87ZDqAZkCa/KAwDQYJKoZI
+hvcNAQELBQADggEBADWnQUx7LtZw8+Q52zky246kBmuPKBWLz3u0lU5ok/yKgdtS+wP10vZuOmtw
+BKD5XZSA0RvfUpiqD+cjIXS6e6NOCkt4IK/FxYKpw8TRG+ka1yQgOSgLdcB6Fv7jE5cJaL2Cbt8L
+w3a0IBfNo4oWzzF9y1ubgegI6lrEpUKwlxC2gGKGYlbJ/cTF+/AKEKSjldP+/M4pTMGVaDmFJQUD
+BEwla7C7SMGM6hwoByNGkObs1heWl0+h7Nj89xhjzJh8umsT0Koahq3/pb0W/2LeFC//EouTNN1o
+L1DuTEJsdZ1+1vQGohlhkFgF4R3B9iVKwoUSTXhvBBvdF1feLJvj+G0=
+</ds:X509Certificate>
+</ds:X509Data>
+</ds:KeyInfo>
+</md:KeyDescriptor>
+<md:ArtifactResolutionService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://wlsdev2.eis.smec-cn.com:9002/saml2/idp/ars/soap" index="0" isDefault="true"/>
+<md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://wlsdev2.eis.smec-cn.com:9002/saml2/idp/sso/post"/>
+<md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact" Location="https://wlsdev2.eis.smec-cn.com:9002/saml2/idp/sso/artifact"/>
+<md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://wlsdev2.eis.smec-cn.com:9002/saml2/idp/sso/redirect"/>
+</md:IDPSSODescriptor>
+<md:Organization>
+<md:OrganizationName xml:lang="en">SMEC</md:OrganizationName>
+<md:OrganizationDisplayName xml:lang="en">SMEC</md:OrganizationDisplayName>
+<md:OrganizationURL xml:lang="en">https://www.smec-cn.com</md:OrganizationURL>
+</md:Organization>
+<md:ContactPerson contactType="technical">
+<md:Company>SMEC</md:Company>
+<md:GivenName>Minjie</md:GivenName>
+<md:SurName>Wang</md:SurName>
+<md:EmailAddress>wangminjie@smec-cn.com</md:EmailAddress>
+<md:TelephoneNumber>8602124083125</md:TelephoneNumber>
+</md:ContactPerson>
+</md:EntityDescriptor>

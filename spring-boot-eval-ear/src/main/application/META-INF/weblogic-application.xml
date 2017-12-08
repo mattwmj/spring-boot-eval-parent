@@ -5,5 +5,7 @@
     <prefer-application-packages>
         <package-name>org.slf4j.*</package-name>
         <package-name>com.fasterxml.*</package-name>
+        <package-name>org.opensaml.*</package-name>
+        <package-name>org.apache.xerces.*</package-name>
     </prefer-application-packages>
 </weblogic-application>

@@ -13,6 +13,8 @@ public interface HRService {
 
     Employee createEmployee(Employee employee);
 
+    String whoAmI();
+
     List<Employee> findEmployeeByJob(String job);
 
     List<Job> findJobByMinSalaryGreaterThan(Long minSalary);

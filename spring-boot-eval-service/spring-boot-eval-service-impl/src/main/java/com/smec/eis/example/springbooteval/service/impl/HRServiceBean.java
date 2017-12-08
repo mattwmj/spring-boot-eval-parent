@@ -45,6 +45,12 @@ public class HRServiceBean implements HRService {
     }
 
     @Override
+    public String whoAmI() {
+        String name = sessionContext.getCallerPrincipal().getName();
+        return name;
+    }
+
+    @Override
     public List<Employee> findEmployeeByJob(String job) {
         Principal caller = sessionContext.getCallerPrincipal();
         System.out.println(caller.getName());

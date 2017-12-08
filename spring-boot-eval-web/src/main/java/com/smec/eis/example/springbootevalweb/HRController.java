@@ -36,8 +36,6 @@ public class HRController {
     @RequestMapping(value = "/employee/{job}", method = RequestMethod.GET)
     public @ResponseBody
     List<Employee> findByJobPath(@PathVariable String job) {
-        Subject subject = Subject.getSubject(AccessController.getContext());
-        System.out.println(subject.toString());
         List<Employee> resultList = hrService.findEmployeeByJob(job);
         return resultList;
     }

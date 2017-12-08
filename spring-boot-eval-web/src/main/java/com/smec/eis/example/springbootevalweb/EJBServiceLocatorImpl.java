@@ -11,7 +11,9 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.security.AccessController;
+import java.security.Principal;
 import java.security.PrivilegedExceptionAction;
+import java.util.Hashtable;
 
 @Component
 public class EJBServiceLocatorImpl implements EJBServiceLocator {
@@ -20,6 +22,23 @@ public class EJBServiceLocatorImpl implements EJBServiceLocator {
     public <T> T getService(Class<T> serviceInterfaceClass) {
         try {
             Context ctx = new InitialContext();
+            T ejb = (T) ctx.lookup("java:global/spring-boot-app/spring-boot-eval-service-impl/" + serviceInterfaceClass.getSimpleName() + "Bean");
+            EJBServiceInvocationHandler handler = new EJBServiceInvocationHandler(ejb);
+            Object proxy =
+                    Proxy.newProxyInstance(ejb.getClass().getClassLoader(), ejb.getClass().getInterfaces(), handler);
+            return (T) proxy;
+        } catch (NamingException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public <T> T getService(Class<T> serviceInterfaceClass, Principal principal) {
+        try {
+            Hashtable environment = new Hashtable<>();
+            environment.put(Context.SECURITY_PRINCIPAL, principal.getName());
+            Context ctx = new InitialContext(environment);
             T ejb = (T) ctx.lookup("java:global/spring-boot-app/spring-boot-eval-service-impl/" + serviceInterfaceClass.getSimpleName() + "Bean");
             EJBServiceInvocationHandler handler = new EJBServiceInvocationHandler(ejb);
             Object proxy =

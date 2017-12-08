@@ -8,6 +8,8 @@
         <wls:prefer-application-packages>
             <wls:package-name>org.slf4j.*</wls:package-name>
             <wls:package-name>com.fasterxml.*</wls:package-name>
+            <wls:package-name>org.opensaml.*</wls:package-name>
+            <wls:package-name>org.apache.xerces.*</wls:package-name>
         </wls:prefer-application-packages>
     </wls:container-descriptor>
 </wls:weblogic-web-app>
